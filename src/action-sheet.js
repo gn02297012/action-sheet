@@ -38,8 +38,8 @@ ActionSheet.prototype = {
         this.el = $(tpl);
 
         this.el.hide().css({
-            width: doc.clientWidth + 'px',
-            height: doc.clientHeight + 'px'
+            width: '100%',
+            height: '100%'
         });
 
         bindTapEvent(this.el.find('.as-cover')[0], this.hide.bind(this));
@@ -55,6 +55,8 @@ ActionSheet.prototype = {
 
         this.el.show();
         this.el.addClass('as-in');
+        this.el.addClass('as-show');
+        this.el.removeClass('as-hide');
 
         setTimeout(function(){
             this.el.removeClass('as-in');
@@ -67,6 +69,8 @@ ActionSheet.prototype = {
     hide: function(){
 
         this.el.addClass('as-out');
+        this.el.removeClass('as-show');
+        this.el.addClass('as-hide');
 
         setTimeout(function(){
             this.el.removeClass('as-out').hide();
